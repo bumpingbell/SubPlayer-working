@@ -1,4 +1,11 @@
-Run `npm start` and enjoy.
+Use node 16, then run
+```
+npm install --legacy-peer-deps
+npm start
+```
+
+or pull the docker image from https://hub.docker.com/repository/docker/bumpingbell/subplayer/general and enjoy.
+
 
 # SubPlayer
 
