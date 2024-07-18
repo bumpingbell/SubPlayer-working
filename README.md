@@ -1,3 +1,5 @@
+Run `npm start` and enjoy.
+
 # SubPlayer
 
 > SubPlayer is an online subtitle editor
