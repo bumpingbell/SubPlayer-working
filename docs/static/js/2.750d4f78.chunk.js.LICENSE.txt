@@ -11,7 +11,7 @@ object-assign
 */
 
 /*!
- * WFPlayer.js v2.0.9
+ * WFPlayer.js v2.1.0
  * Github: https://github.com/zhw2590582/WFPlayer#readme
  * (c) 2017-2021 Harvey Zack
  * Released under the MIT License.
@@ -37,15 +37,6 @@ object-assign
 
 /** @license React v17.0.2
  * react-dom.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/** @license React v17.0.2
- * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
  *

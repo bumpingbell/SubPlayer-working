@@ -237,7 +237,10 @@ const Style = styled.div`
     }
 `;
 
-FFmpeg.createFFmpeg({ log: true }).load();
+FFmpeg.createFFmpeg({ 
+corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js", 
+log: true
+ }).load();
 const fs = new SimpleFS.FileSystem();
 
 export default function Header({
@@ -261,7 +264,8 @@ export default function Header({
         async (file) => {
             try {
                 const { createFFmpeg, fetchFile } = FFmpeg;
-                const ffmpeg = createFFmpeg({ log: true });
+                const ffmpeg = createFFmpeg({ log: true, 
+                                            corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js" });
                 ffmpeg.setProgress(({ ratio }) => setProcessing(ratio * 100));
                 setLoading(t('LOADING_FFMPEG'));
                 await ffmpeg.load();
