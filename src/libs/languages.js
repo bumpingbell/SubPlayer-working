@@ -431,7 +431,6 @@ const tr = [
 
 const languages = {
     en,
-    zh,
     'zh-cn': zh_cn,
     'zh-tw': zh_tw,
     tr,
