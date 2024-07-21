@@ -103,7 +103,7 @@ const tr = {
     OPEN_VIDEO_ERROR: 'Lütfen önce videoyu açın',
 };
 
-const zh = {
+const zh_cn = {
     LOADING: '加载中...',
     SUB_TEXT: '字幕文本',
     OPEN_VIDEO: '打开视频',
@@ -139,12 +139,47 @@ const zh = {
     OPEN_VIDEO_ERROR: '请先打开视频',
 };
 
+const zh_tw = {
+    LOADING: '載入中...',
+    SUB_TEXT: '字幕文本',
+    OPEN_VIDEO: '開啟影片',
+    OPEN_SUB: '開啟字幕',
+    EXPORT_ASS: '輸出 ASS',
+    EXPORT_SRT: '輸出 SRT',
+    EXPORT_VTT: '輸出 VTT',
+    EXPORT_VIDEO: '輸出影片',
+    TRANSLATE: '批次翻譯',
+    TRANSLATING: '翻譯中...',
+    TRANSLAT_SUCCESS: '翻譯成功',
+    DECODE_START: '開始解碼音訊',
+    DECODE_SUCCESS: '音訊解碼成功',
+    DECODE_ERROR: '音訊解碼失敗',
+    VIDEO_EXT_ERR: '無法打開該影片格式',
+    SUB_EXT_ERR: '無法打開該字幕格式',
+    MOBILE_TIP: '請使用電腦訪問',
+    HOTKEY_01: '空格鍵：播放/暫停',
+    HOTKEY_02: 'Ctrl + Z：上一步',
+    CLEAR: '清除所有內容',
+    UNDO: '上一步',
+    DELETE: '刪除此字幕',
+    MERGE: '合併下一筆字幕',
+    SPLIT: '拆分字幕',
+    LOADING_FFMPEG: '正在載入依賴套件...',
+    LOADING_FONT: '正在載入字體...',
+    LOADING_VIDEO: '正在載入影片...',
+    LOADING_SUB: '正在載入字幕...',
+    CLEAR_TIP: '確定要清空所有內容嗎？',
+    BURN_ERROR: '合成字幕失敗',
+    BURN_START: '開始合成字幕',
+    BURN_SUCCESS: '合成字幕成功',
+    OPEN_VIDEO_ERROR: '請先打開影片',
+};
+
 const i18n = {
     en,
     it,
-    zh,
-    'zh-cn': zh,
-    'zh-tw': zh,
+    'zh-cn': zh_cn,
+    'zh-tw': zh_tw,
     tr,
 };
 
