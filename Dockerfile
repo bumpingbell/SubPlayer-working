@@ -1,3 +1,4 @@
+# for testing in a local docker environment
 FROM node:16
 WORKDIR /home 
 COPY . /home
