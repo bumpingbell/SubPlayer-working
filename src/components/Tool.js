@@ -97,12 +97,12 @@ const Style = styled.div`
             justify-content: center;
             align-items: center;
             height: 35px;
-            width: 31%;
+            width: 100%; //old: 31%;
             border-radius: 3px;
             color: #fff;
             cursor: pointer;
             font-size: 13px;
-            background-color: #009688;
+            background-color: #673ab7; //old: #009688
             transition: all 0.2s ease 0s;
 
             &:hover {
@@ -163,6 +163,33 @@ const Style = styled.div`
             cursor: pointer;
             font-size: 13px;
             background-color: #673ab7;
+            transition: all 0.2s ease 0s;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .playback-speed { 
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid rgb(255 255 255 / 20%);
+
+        .btn {
+            position: relative;
+            opacity: 0.85;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35px;
+            width: 31%;
+            border-radius: 3px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            background-color: #009688;
             transition: all 0.2s ease 0s;
 
             &:hover {
@@ -489,23 +516,23 @@ export default function Header({
                         <input className="file" type="file" onChange={onSubtitleChange} onClick={onInputClick} />
                     </div>
                 </div>
-                {window.crossOriginIsolated ? (
+                {/* {window.crossOriginIsolated ? (
                     <div className="burn" onClick={burnSubtitles}>
                         <div className="btn">
                             <Translate value="EXPORT_VIDEO" />
                         </div>
                     </div>
-                ) : null}
+                ) : null} */}
                 <div className="export">
-                    <div className="btn" onClick={() => downloadSub('ass')}>
+                    {/* <div className="btn" onClick={() => downloadSub('ass')}>
                         <Translate value="EXPORT_ASS" />
-                    </div>
+                    </div> */}
                     <div className="btn" onClick={() => downloadSub('srt')}>
                         <Translate value="EXPORT_SRT" />
                     </div>
-                    <div className="btn" onClick={() => downloadSub('vtt')}>
+                    {/* <div className="btn" onClick={() => downloadSub('vtt')}>
                         <Translate value="EXPORT_VTT" />
-                    </div>
+                    </div> */}
                 </div>
                 <div className="operate">
                     <div
@@ -533,6 +560,48 @@ export default function Header({
                     </select>
                     <div className="btn" onClick={onTranslate}>
                         <Translate value="TRANSLATE" />
+                    </div>
+                </div>
+                <div className="playback-speed">
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            document.querySelector('video').playbackRate = 0.7;
+                        }}
+                    >
+                        0.7x
+                    </div>
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            document.querySelector('video').playbackRate = 1.0;
+                        }}
+                    >
+                        1.0x
+                    </div>
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            document.querySelector('video').playbackRate = 1.2;
+                        }}
+                    >
+                        1.2x
+                    </div>
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            document.querySelector('video').playbackRate = 1.5;
+                        }}
+                    >
+                        1.5x
+                    </div>
+                    <div
+                        className="btn"
+                        onClick={() => {
+                            document.querySelector('video').playbackRate = 2.0;
+                        }}
+                    >
+                        2.0x
                     </div>
                 </div>
                 <div className="hotkey">
