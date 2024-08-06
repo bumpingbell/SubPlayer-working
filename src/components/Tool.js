@@ -296,14 +296,23 @@ export default function Header({
                 ffmpeg.setProgress(({ ratio }) => setProcessing(ratio * 100));
                 setLoading(t('LOADING_FFMPEG'));
                 await ffmpeg.load();
-                ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+
+                // Use a temporary file name without Chinese characters
+                const tempFileName = `temp_input_${Date.now()}.mp4`;
+                ffmpeg.FS('writeFile', tempFileName, await fetchFile(file));
+                // ffmpeg.FS('writeFile', file.name, await fetchFile(file));
+
                 setLoading('');
                 notify({
                     message: t('DECODE_START'),
                     level: 'info',
                 });
                 const output = `${Date.now()}.mp3`;
-                await ffmpeg.run('-i', file.name, '-ac', '1', '-ar', '8000', output);
+
+                // Use the temporary file name in the FFmpeg command
+                await ffmpeg.run('-i', tempFileName, '-ac', '1', '-ar', '8000', output);
+                // await ffmpeg.run('-i', file.name, '-ac', '1', '-ar', '8000', output);
+
                 const uint8 = ffmpeg.FS('readFile', output);
                 // download(URL.createObjectURL(new Blob([uint8])), `${output}`);
                 await waveform.decoder.decodeAudioData(uint8);
@@ -314,6 +323,11 @@ export default function Header({
                     message: t('DECODE_SUCCESS'),
                     level: 'success',
                 });
+
+                // Clean up: remove temporary files
+                ffmpeg.FS('unlink', tempFileName);
+                ffmpeg.FS('unlink', output);
+
             } catch (error) {
                 setLoading('');
                 setProcessing(0);
@@ -402,14 +416,14 @@ export default function Header({
                     waveform.drawer.update();
                     waveform.seek(0);
                     player.currentTime = 0;
-                    clearSubs();
-                    setSubtitle([
-                        newSub({
-                            start: '00:00:00.000',
-                            end: '00:00:01.000',
-                            text: t('SUB_TEXT'),
-                        }),
-                    ]);
+                    // clearSubs();
+                    // setSubtitle([
+                    //     newSub({
+                    //         start: '00:00:00.000',
+                    //         end: '00:00:01.000',
+                    //         text: t('SUB_TEXT'),
+                    //     }),
+                    // ]);
                     player.src = url;
                 } else {
                     notify({
@@ -526,13 +540,13 @@ export default function Header({
                 <div className="export">
                     {/* <div className="btn" onClick={() => downloadSub('ass')}>
                         <Translate value="EXPORT_ASS" />
-                    </div> */}
+                    </div>
                     <div className="btn" onClick={() => downloadSub('srt')}>
                         <Translate value="EXPORT_SRT" />
-                    </div>
-                    {/* <div className="btn" onClick={() => downloadSub('vtt')}>
-                        <Translate value="EXPORT_VTT" />
                     </div> */}
+                    <div className="btn" onClick={() => downloadSub('vtt')}>
+                        <Translate value="EXPORT_VTT" />
+                    </div>
                 </div>
                 <div className="operate">
                     <div

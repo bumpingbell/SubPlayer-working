@@ -165,7 +165,7 @@ export default function App({ defaultLang }) {
             const merge = newSub({
                 start: sub.start,
                 end: next.end,
-                text: sub.text.trim() + '\n' + next.text.trim(),
+                text: sub.text.trim() + next.text.trim(),
             });
             subs[index] = merge;
             subs.splice(index + 1, 1);
