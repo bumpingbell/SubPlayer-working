@@ -15,7 +15,7 @@ const Style = styled.div`
     justify-content: space-between;
     padding-bottom: 20px;
     position: relative;
-    overflow: hidden;
+    overflow: scroll;
     background-color: rgb(0 0 0 / 100%);
     border-left: 1px solid rgb(255 255 255 / 20%);
 
@@ -211,6 +211,17 @@ const Style = styled.div`
             text-align: center;
             color: rgb(255 255 255 / 75%);
             background-color: rgb(255 255 255 / 20%);
+        }
+    }
+
+    .info { 
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border-bottom: 1px solid rgb(255 255 255 / 20%);
+        ol {
+            padding-inline-start: 20px;
+            font-size: 10pt;
         }
     }
 
@@ -625,6 +636,18 @@ export default function Header({
                     <span>
                         <Translate value="HOTKEY_02" />
                     </span>
+                </div>
+                <div className="info">
+                    <ol>
+                        <li>先載入影片與字幕</li>
+                        <li>右側工具列可調整影片播放速度</li>
+                        <li>按空格鍵或點播放器，可以開始/暫停影片</li>
+                        <li>拖曳時間軸秒數區域，可以跳到指定的秒數</li>
+                        <li>下方時間軸可以調整每筆字幕的時長，按右鍵可以刪除該筆字幕/合併下一筆。在時間軸空白處拖曳，可以新增字幕</li>
+                        <li>字幕的內容，可在影片右邊的窗格更改</li>
+                        <li>若不小心重新整理到頁面，字幕的進度會保留，請重新載入影片即可</li>
+                        <li>完成後按「輸出 VTT 字幕」</li>
+                    </ol>
                 </div>
             </div>
 {/*             <div className="bottom">
