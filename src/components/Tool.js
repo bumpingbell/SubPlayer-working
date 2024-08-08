@@ -422,7 +422,9 @@ export default function Header({
                 if (canPlayType === 'maybe' || canPlayType === 'probably') {
                     setVideoFile(file);
                     decodeAudioData(file);
-                    const url = URL.createObjectURL(new Blob([file]));
+                    // 兼容 Safari，Safari 無法將非 'video/mp4' 的 Blob 傳入 video src
+                    const url = URL.createObjectURL(new Blob([file] , 
+                        { type: 'video/mp4' })); // https://juejin.cn/post/7233216023276896315
                     waveform.decoder.destroy();
                     waveform.drawer.update();
                     waveform.seek(0);
@@ -435,7 +437,9 @@ export default function Header({
                     //         text: t('SUB_TEXT'),
                     //     }),
                     // ]);
+
                     player.src = url;
+                    
                 } else {
                     notify({
                         message: `${t('VIDEO_EXT_ERR')}: ${file.type || ext}`,
@@ -641,7 +645,7 @@ export default function Header({
                     <ol>
                         <li>先載入影片與字幕</li>
                         <li>右側工具列可調整影片播放速度</li>
-                        <li>按空格鍵或點播放器，可以開始/暫停影片</li>
+                        <li>按空格鍵或點影片，可以開始/暫停播放</li>
                         <li>拖曳時間軸秒數區域，可以跳到指定的秒數</li>
                         <li>下方時間軸可以調整每筆字幕的時長，按右鍵可以刪除該筆字幕/合併下一筆。在時間軸空白處拖曳，可以新增字幕</li>
                         <li>字幕的內容，可在影片右邊的窗格更改</li>
