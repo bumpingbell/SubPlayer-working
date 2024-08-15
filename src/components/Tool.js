@@ -201,10 +201,18 @@ const Style = styled.div`
     .hotkey {
         display: flex;
         justify-content: space-between;
-        padding: 10px;
-
-        span {
+        padding: 10px 10px 0 10px;
+        #first-line {
             width: 49%;
+            font-size: 13px;
+            padding: 5px 0;
+            border-radius: 3px;
+            text-align: center;
+            color: rgb(255 255 255 / 75%);
+            background-color: rgb(255 255 255 / 20%);
+        }
+        #second-line {
+            width: 100%;
             font-size: 13px;
             padding: 5px 0;
             border-radius: 3px;
@@ -280,6 +288,8 @@ corePath: "https://unpkg.com/@ffmpeg/core@0.10.0/dist/ffmpeg-core.js",
 log: true
  }).load();
 const fs = new SimpleFS.FileSystem();
+
+let sub_filename = '請改檔名.vtt'; // set a global variable for subtitle name, maybe not best practice
 
 export default function Header({
     player,
@@ -456,6 +466,8 @@ export default function Header({
             const file = event.target.files[0];
             if (file) {
                 const ext = getExt(file.name);
+                sub_filename = file.name; // Change the subtitle file name
+                console.log(sub_filename);
                 if (['ass', 'vtt', 'srt', 'json'].includes(ext)) {
                     file2sub(file)
                         .then((res) => {
@@ -486,7 +498,8 @@ export default function Header({
     const downloadSub = useCallback(
         (type) => {
             let text = '';
-            const name = `${Date.now()}.${type}`;
+            // const name = `${Date.now()}.${type}`;
+            const name = sub_filename; // Change name to uploaded file's name
             switch (type) {
                 case 'vtt':
                     text = sub2vtt(subtitle);
@@ -634,20 +647,26 @@ export default function Header({
                     </div>
                 </div>
                 <div className="hotkey">
-                    <span>
-                        <Translate value="HOTKEY_01" />
-                    </span>
-                    <span>
-                        <Translate value="HOTKEY_02" />
-                    </span>
+                        <span id="first-line">
+                            <Translate value="HOTKEY_01" />
+                        </span>
+                        <span id="first-line">
+                            <Translate value="HOTKEY_02" />
+                        </span>
+                </div>
+                <div className="hotkey">
+                        <span id="second-line">
+                            <Translate value="HOTKEY_03" />
+                        </span>
                 </div>
                 <div className="info">
                     <ol>
                         <li>先載入影片與字幕</li>
                         <li>右側工具列可調整影片播放速度</li>
                         <li>按空格鍵或點影片，可以開始/暫停播放</li>
-                        <li>拖曳時間軸秒數區域，可以跳到指定的秒數</li>
+                        <li>拖曳時間軸上橘色小方格，可以跳到指定的秒數</li>
                         <li>下方時間軸可以調整每筆字幕的時長，按右鍵可以刪除該筆字幕/合併下一筆。在時間軸空白處拖曳，可以新增字幕</li>
+                        <li>點選影片上顯示的字幕，會跳出拆分字幕的選項</li>
                         <li>字幕的內容，可在影片右邊的窗格更改</li>
                         <li>若不小心重新整理到頁面，字幕的進度會保留，請重新載入影片即可</li>
                         <li>完成後按「輸出 VTT 字幕」</li>
