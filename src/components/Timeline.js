@@ -252,14 +252,14 @@ export default React.memo(
                                 start: DT.d2t(sub.startTime - 0.1),
                                 end: DT.d2t(sub.endTime - 0.1),
                             });
-                            player.currentTime = sub.startTime - 0.1;
+                            // player.currentTime = sub.startTime - 0.1;
                             break;
                         case 39:
                             updateSub(sub, {
                                 start: DT.d2t(sub.startTime + 0.1),
                                 end: DT.d2t(sub.endTime + 0.1),
                             });
-                            player.currentTime = sub.startTime + 0.1;
+                            // player.currentTime = sub.startTime + 0.1;
                             break;
                         case 8:
                         case 46:
