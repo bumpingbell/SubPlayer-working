@@ -223,9 +223,9 @@ export default function App({ defaultLang }) {
                         }
                     }
                     break;
-                case 90: // Ctrl + Z, Last step
+                case 90:
                     event.preventDefault();
-                    if (event.ctrlKey || event.metaKey) {
+                    if (event.metaKey || event.ctrlkey) {
                         undoSubs();
                     }
                     break;

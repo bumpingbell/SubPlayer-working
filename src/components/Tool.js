@@ -467,7 +467,6 @@ export default function Header({
             if (file) {
                 const ext = getExt(file.name);
                 sub_filename = file.name; // Change the subtitle file name
-                console.log(sub_filename);
                 if (['ass', 'vtt', 'srt', 'json'].includes(ext)) {
                     file2sub(file)
                         .then((res) => {
