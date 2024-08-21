@@ -41,7 +41,8 @@ const Style = styled.div`
             z-index: 20;
             left: 0;
             right: 0;
-            bottom: 5%;
+            // bottom: 5%;
+            bottom: -40px;
             width: 100%;
             padding: 0 20px;
             user-select: none;

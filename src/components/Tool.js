@@ -202,17 +202,8 @@ const Style = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 10px 10px 0 10px;
-        #first-line {
+        span {
             width: 49%;
-            font-size: 13px;
-            padding: 5px 0;
-            border-radius: 3px;
-            text-align: center;
-            color: rgb(255 255 255 / 75%);
-            background-color: rgb(255 255 255 / 20%);
-        }
-        #second-line {
-            width: 100%;
             font-size: 13px;
             padding: 5px 0;
             border-radius: 3px;
@@ -646,16 +637,11 @@ export default function Header({
                     </div>
                 </div>
                 <div className="hotkey">
-                        <span id="first-line">
+                        <span>
                             <Translate value="HOTKEY_01" />
                         </span>
-                        <span id="first-line">
+                        <span>
                             <Translate value="HOTKEY_02" />
-                        </span>
-                </div>
-                <div className="hotkey">
-                        <span id="second-line">
-                            <Translate value="HOTKEY_03" />
                         </span>
                 </div>
                 <div className="info">
@@ -665,8 +651,10 @@ export default function Header({
                         <li>按空格鍵或點影片，可以開始/暫停播放</li>
                         <li>拖曳時間軸上橘色小方格，可以跳到指定的秒數</li>
                         <li>下方時間軸可以調整每筆字幕的時長，按右鍵可以刪除該筆字幕/合併下一筆。在時間軸空白處拖曳，可以新增字幕</li>
+                        <li>點一下時間軸上的一筆字幕，可將其置中。再點兩下，可自動切齊字幕頭尾到前面與後面</li>
                         <li>點選影片上顯示的字幕，會跳出拆分字幕的選項</li>
                         <li>字幕的內容，可在影片右邊的窗格更改</li>
+                        <li>若有一筆字幕聽不懂/有問題，可在時間軸上該筆字幕按右鍵，回報讓作者知道</li>
                         <li>若不小心重新整理到頁面，字幕的進度會保留，請重新載入影片即可</li>
                         <li>完成後按「輸出 VTT 字幕」</li>
                     </ol>

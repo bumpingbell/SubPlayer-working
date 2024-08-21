@@ -265,14 +265,14 @@ export default React.memo(
                         case 46:
                             removeSub(sub);
                             break;
-                        case 77: // Ctrl + Shift + M, Merge subtitles
-                            event.preventDefault();
-                            if ((event.ctrlKey || event.metaKey) && event.shiftKey) {
-                                if (sub === lastSub) { // to prevent merging other subs other than next one
-                                    mergeSub(sub);
-                                }
-                            }
-                            break;
+                        // case 77: // Ctrl + Shift + M, Merge subtitles
+                        //     event.preventDefault();
+                        //     if ((event.ctrlKey || event.metaKey) && event.shiftKey) {
+                        //         if (sub === lastSub) { // to prevent merging other subs other than next one
+                        //             mergeSub(sub);
+                        //         }
+                        //     }
+                        //     break;
                         default:
                             break;
                     }
