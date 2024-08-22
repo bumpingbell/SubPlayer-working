@@ -280,7 +280,7 @@ log: true
  }).load();
 const fs = new SimpleFS.FileSystem();
 
-let sub_filename = '請改檔名.vtt'; // set a global variable for subtitle name, maybe not best practice
+export let sub_filename = '請改檔名.vtt'; // set a global variable for subtitle name, maybe not best practice
 
 export default function Header({
     player,
