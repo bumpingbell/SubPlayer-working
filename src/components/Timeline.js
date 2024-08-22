@@ -281,6 +281,13 @@ export default React.memo(
             [currentSubs, player, removeSub, updateSub, mergeSub],
         );
 
+        const reportProblem = (sub) => {
+            // Implementation here
+            // Add your logic to handle the problem report
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSe0sZW1kc-H71luzB0nT4TzaLHlZmawMG2O1esCizhu-KG1kA/viewform?usp=pp_url&entry.496373084=' + 'Start: ' + sub.start + " End: " + sub.end + " Text: " + sub.text;
+            window.open(url, '_blank').focus();
+          };
+
         useEffect(() => {
             document.addEventListener('mousemove', onDocumentMouseMove);
             document.addEventListener('mouseup', onDocumentMouseUp);
@@ -352,6 +359,9 @@ export default React.memo(
                     })}
                 </div>
                 <ContextMenu id="contextmenu">
+                <MenuItem onClick={() => reportProblem(lastSub)}>
+                        <Translate value="REPORT" />
+                    </MenuItem>
                     <MenuItem onClick={() => removeSub(lastSub)}>
                         <Translate value="DELETE" />
                     </MenuItem>
