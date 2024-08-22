@@ -8,7 +8,8 @@ import { getKeyCode } from '../utils';
 
 const Timeline = styled.div`
     position: absolute;
-    z-index: 9;
+    // z-index: 9;
+    z-index: 99; // for context menu show before the grab
     top: 0;
     right: 0;
     bottom: 0;
@@ -284,7 +285,7 @@ export default React.memo(
         const reportProblem = (sub) => {
             // Implementation here
             // Add your logic to handle the problem report
-            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSe0sZW1kc-H71luzB0nT4TzaLHlZmawMG2O1esCizhu-KG1kA/viewform?usp=pp_url&entry.496373084=' + 'Start: ' + sub.start + " End: " + sub.end + " Text: " + sub.text;
+            const url = 'https://docs.google.com/forms/d/e/1FAIpQLSe0sZW1kc-H71luzB0nT4TzaLHlZmawMG2O1esCizhu-KG1kA/viewform?usp=pp_url&entry.496373084=' + 'Start: ' + sub.start + "%0AEnd: " + sub.end + "%0AText: " + sub.text;
             window.open(url, '_blank').focus();
           };
 
@@ -359,13 +360,13 @@ export default React.memo(
                     })}
                 </div>
                 <ContextMenu id="contextmenu">
-                <MenuItem onClick={() => reportProblem(lastSub)}>
+                <MenuItem onClick={() => reportProblem(lastSub)} attributes={{style: {color: 'darkgoldenrod'}}} >
                         <Translate value="REPORT" />
                     </MenuItem>
-                    <MenuItem onClick={() => removeSub(lastSub)}>
+                    <MenuItem onClick={() => removeSub(lastSub)} >
                         <Translate value="DELETE" />
                     </MenuItem>
-                    <MenuItem onClick={() => mergeSub(lastSub)}>
+                    <MenuItem onClick={() => mergeSub(lastSub)} >
                         <Translate value="MERGE" />
                     </MenuItem>
                 </ContextMenu>
